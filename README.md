@@ -1,7 +1,7 @@
 Site Pessoal & Portfólio - Rafael Holder
 Este é o repositório do meu site pessoal, que serve como currículo, portfólio de projetos e blog. Foi desenvolvido para apresentar minhas habilidades, experiências e conhecimentos na área de Segurança da Informação.
 
-➡️ [Acesse a versão ao vivo aqui (Substitua pelo seu link quando estiver hospedado)](https://rafaelholder.github.io/)
+➡️ [Acesse a versão ao vivo aqui](https://rafaelholder.github.io/)
 
 🚀 Sobre o Projeto
 Este site foi criado para ser um hub central das minhas informações profissionais. O design foi inspirado na paleta de cores do Lanterna Verde (tons de preto e verde), buscando uma estética moderna e tecnológica que reflete a área de cibersegurança.
