@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holder - Threat Intel & Blue Team</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2310b981'></rect><text x='50' y='50' font-size='50' fill='%23050a04' text-anchor='middle' dy='.3em' font-family='Inter, sans-serif' font-weight='900'>RH</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050a04; /* Um preto com leve tom de verde */
+            color: #e0e0e0;
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(16, 185, 129, 0.6), 0 0 20px rgba(16, 185, 129, 0.4);
+        }
+        .bg-gradient-green-dark {
+            background: linear-gradient(180deg, rgba(5, 150, 105, 0.1) 0%, rgba(5, 10, 4, 0) 100%);
+        }
+        .card {
+            background-color: rgba(16, 24, 18, 0.5);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        .tag {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050a04;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #059669;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex justify-between items-center">
+                <a href="#home" class="text-2xl font-black text-green-400 text-glow">RH</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#sobre" class="text-gray-300 hover:text-green-400 transition-colors">Sobre</a>
+                    <a href="#experiencia" class="text-gray-300 hover:text-green-400 transition-colors">Experiência</a>
+                    <a href="#habilidades" class="text-gray-300 hover:text-green-400 transition-colors">Habilidades</a>
+                    <a href="#portfolio" class="text-gray-300 hover:text-green-400 transition-colors">Portfólio</a>
+                    <a href="#blog" class="text-gray-300 hover:text-green-400 transition-colors">Blog</a>
+                </div>
+                <a href="#contato" class="hidden md:block bg-green-500 text-black font-bold py-2 px-4 rounded-lg hover:bg-green-400 transition-all duration-300 transform hover:scale-105">
+                    Contato
+                </a>
+                <button id="mobile-menu-button" class="md:hidden text-green-400">
+                    <i data-lucide="menu"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-black/90 z-40 md:hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#sobre" class="mobile-link text-2xl text-gray-300 hover:text-green-400 transition-colors">Sobre</a>
+            <a href="#experiencia" class="mobile-link text-2xl text-gray-300 hover:text-green-400 transition-colors">Experiência</a>
+            <a href="#habilidades" class="mobile-link text-2xl text-gray-300 hover:text-green-400 transition-colors">Habilidades</a>
+            <a href="#portfolio" class="mobile-link text-2xl text-gray-300 hover:text-green-400 transition-colors">Portfólio</a>
+            <a href="#blog" class="mobile-link text-2xl text-gray-300 hover:text-green-400 transition-colors">Blog</a>
+            <a href="#contato" class="mobile-link text-2xl text-gray-300 hover:text-green-400 transition-colors">Contato</a>
+        </div>
+    </div>
+
+
+    <main class="container mx-auto px-6">
+
+        <!-- Seção Home -->
+        <section id="home" class="min-h-screen flex items-center bg-gradient-green-dark -mx-6 px-6">
+            <div class="max-w-3xl">
+                <h1 class="text-5xl md:text-7xl font-black text-white leading-tight">
+                    Rafael Holder
+                </h1>
+                <h2 class="text-3xl md:text-4xl font-bold text-green-400 text-glow mt-2">
+                    Analista de Segurança da Informação
+                </h2>
+                <p class="mt-6 text-lg text-gray-300 max-w-2xl">
+                    Profissional de Threat Intelligence e Blue Team, graduando em Segurança da Informação, apaixonado por Cybersecurity e Graphic Novels.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#portfolio" class="bg-green-500 text-black font-bold py-3 px-6 rounded-lg hover:bg-green-400 transition-all duration-300 transform hover:scale-105 text-center">
+                        Ver Projetos
+                    </a>
+                    <a href="https://www.linkedin.com/in/rafaelholder/" target="_blank" class="border-2 border-green-500 text-green-500 font-bold py-3 px-6 rounded-lg hover:bg-green-500 hover:text-black transition-all duration-300 text-center">
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Sobre -->
+        <section id="sobre" class="py-20 md:py-32">
+            <div class="grid md:grid-cols-5 gap-12 items-center">
+                <div class="md:col-span-2">
+                    <div class="w-full aspect-square rounded-lg bg-green-900/50 p-4 border-2 border-green-500/30">
+                        <img src="https://placehold.co/400x400/050a04/10b981?text=RH" alt="Foto de Rafael Holder" class="w-full h-full object-cover rounded-md grayscale hover:grayscale-0 transition-all duration-500">
+                    </div>
+                </div>
+                <div class="md:col-span-3">
+                    <h2 class="text-3xl font-bold text-white mb-4">Sobre Mim</h2>
+                    <p class="text-gray-300 mb-4">
+                        Olá! Sou Rafael Holder, um profissional de Cybersecurity com foco em Threat Intel e Blue Team. Minha jornada começou na Polícia Penal de Pernambuco, onde atuei com Cybersecurity e bancos de dados, consolidando minha paixão por segurança e proteção de ativos.
+                    </p>
+                    <p class="text-gray-300 mb-4">
+                        Paralelamente, tive a oportunidade de ser monitor da disciplina de Fundamentos de Programação na CESAR School, onde pude compartilhar meu conhecimento em Python, ensinando as bases da linguagem para os alunos do curso de Ciência de Dados.
+                    </p>
+                    <p class="text-gray-300">
+                        Hoje, busco aplicar minha experiência em Threat Intelligence e Blue Team para criar soluções que estudem e impeçam ataques de Hackers/APTs.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Experiência -->
+        <section id="experiencia" class="py-20 md:py-32">
+            <h2 class="text-3xl font-bold text-white text-center mb-12">Experiência Profissional</h2>
+            <div class="max-w-3xl mx-auto relative">
+                <!-- Linha do tempo vertical -->
+                <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-green-500/20"></div>
+
+                <!-- Item 1 -->
+                <div class="relative mb-12">
+                    <div class="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full mt-1.5 border-2 border-black"></div>
+                    <div class="card p-6 rounded-lg ml-auto md:ml-0 md:w-[calc(50%-2rem)] md:mr-auto">
+                        <h3 class="font-bold text-xl text-green-400">Monitor de Programação</h3>
+                        <p class="text-sm text-gray-400 mb-2">CESAR School</p>
+                        <p class="text-gray-300">Ensinei os fundamentos de Python para alunos de graduação, com foco em manipulação e análise de dados, desenvolvendo habilidades de lógica de programação e resolução de problemas.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative mb-12">
+                    <div class="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full mt-1.5 border-2 border-black"></div>
+                    <div class="card p-6 rounded-lg mr-auto md:mr-0 md:w-[calc(50%-2rem)] md:ml-auto">
+                        <h3 class="font-bold text-xl text-green-400">Estagiário de Banco de Dados & S.I.</h3>
+                        <p class="text-sm text-gray-400 mb-2">Polícia Penal de Pernambuco</p>
+                        <p class="text-gray-300">Atuei na administração e segurança de bancos de dados, apoiando a infraestrutura de TI e contribuindo para a proteção de informações sensíveis do órgão.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Habilidades -->
+        <section id="habilidades" class="py-20 md:py-32">
+            <h2 class="text-3xl font-bold text-white text-center mb-12">Hard/Soft Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <div class="tag p-4 rounded-lg text-center font-semibold text-lg">Python</div>
+                <div class="tag p-4 rounded-lg text-center font-semibold text-lg">Flask</div>
+                <div class="tag p-4 rounded-lg text-center font-semibold text-lg">Playwright</div>
+                <div class="tag p-4 rounded-lg text-center font-semibold text-lg">SQL</div>
+                <div class="tag p-4 rounded-lg text-center font-semibold text-lg">MITRE ATT&CK</div>
+                <div class="tag p-4 rounded-lg text-center font-semibold text-lg">OWASP</div>
+                <div class="tag p-4 rounded-lg text-center font-semibold text-lg">Blue Team</div>
+                <div class="tag p-4 rounded-lg text-center font-semibold text-lg">Inglês Fluente</div>
+                <div class="tag p-4 rounded-lg text-center font-semibold text-lg">Comunicação assertiva</div>
+                <div class="tag p-4 rounded-lg text-center font-semibold text-lg">Inteligência de Ameaças</div>
+                <div class="tag p-4 rounded-lg text-center font-semibold text-lg">Resposta a Incidentes</div>
+            </div>
+        </section>
+
+        <!-- Seção Portfólio -->
+        <section id="portfolio" class="py-20 md:py-32">
+            <h2 class="text-3xl font-bold text-white text-center mb-12">Portfólio de Projetos</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="card rounded-lg overflow-hidden group">
+                    <img src="https://placehold.co/600x400/0a180f/10b981?text=SecureValidator" alt="Imagem do Projeto 1" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-green-400 mb-2">SecureValidator</h3>
+                        <p class="text-gray-300 mb-4">Um sistema de login seguro em Python, com hash de senhas usando bcrypt e banco de dados SQLite.</p>
+                        <a href="https://github.com/rafaelholder/SecureValidator" class="font-bold text-white hover:text-green-400 transition-colors">Ver Detalhes &rarr;</a>
+                    </div>
+                </div>
+                
+                <div class="card rounded-lg overflow-hidden group">
+                    <img src="./assets/ROT13.jpg" alt="Imagem do Projeto 2" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-green-400 mb-2">ROT13</h3>
+                        <p class="text-gray-300 mb-4">Projeto feito com Flask que demonstra o funcionamento do algoritmo ROT13.</p>
+                        <a href="https://github.com/rafaelholder/rot13-flask" class="font-bold text-white hover:text-green-400 transition-colors">Ver Detalhes &rarr;</a>
+                    </div>
+                </div>
+                
+                <!-- <div class="card rounded-lg overflow-hidden group">
+                    <img src="https://placehold.co/600x400/0a180f/10b981?text=Projeto+3" alt="Imagem do Projeto 3" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-green-400 mb-2">Nome do Projeto 3</h3>
+                        <p class="text-gray-300 mb-4">Breve descrição do projeto, as tecnologias usadas e o problema que ele resolve.</p>
+                        <a href="#" class="font-bold text-white hover:text-green-400 transition-colors">Ver Detalhes &rarr;</a>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+
+        <!-- Seção Blog -->
+        <section id="blog" class="py-20 md:py-32">
+            <h2 class="text-3xl font-bold text-white text-center mb-12">Blog</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                 <!-- Post 1 -->
+                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7321553435097546752/" class="card block p-6 rounded-lg hover:border-green-400/50 transition-all duration-300 transform hover:-translate-y-1">
+                    <p class="text-sm text-gray-400 mb-2">24 de abril, 2025</p>
+                    <h3 class="text-xl font-bold text-green-400 mb-2">Vazamento de dados da XP Investimentos</h3>
+                    <p class="text-gray-300">Uma persperctiva sobre o vazamento de dados e possibilidades de uso para spear phishing.</p>
+                </a>
+                 <!-- Post 2  -->
+                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7355994296153444352/" class="card block p-6 rounded-lg hover:border-green-400/50 transition-all duration-300 transform hover:-translate-y-1">
+                    <p class="text-sm text-gray-400 mb-2">29 de Julho, 2025</p>
+                    <h3 class="text-xl font-bold text-green-400 mb-2">Mapeando Táticas com MITRE ATT&CK</h3>
+                    <p class="text-gray-300">Como o framework ATT&CK pode ser usado para melhorar a detecção e resposta a incidentes.</p>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer / Contato -->
+    <footer id="contato" class="bg-black/50 mt-20">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Vamos Conversar?</h2>
+            <p class="text-gray-300 max-w-lg mx-auto mb-8">
+                Estou sempre aberto a novas oportunidades, projetos e colaborações. Sinta-se à vontade para entrar em contato.
+            </p>
+            <a href="mailto:contato.rafaelholder@gmail.com" class="bg-green-500 text-black font-bold py-3 px-8 rounded-lg hover:bg-green-400 transition-all duration-300 transform hover:scale-105 inline-block">
+                Enviar E-mail
+            </a>
+            <div class="flex justify-center space-x-6 mt-10">
+                <a href="https://www.linkedin.com/in/rafaelholder" target="_blank" class="text-gray-400 hover:text-green-400 transition-colors">
+                    <i data-lucide="linkedin" class="w-8 h-8"></i>
+                </a>
+                <a href="https://github.com/rafaelholder" target="_blank" class="text-gray-400 hover:text-green-400 transition-colors">
+                    <i data-lucide="github" class="w-8 h-8"></i>
+                </a>
+            </div>
+            <p class="text-sm text-gray-500 mt-12">
+                &copy; 2025 Rafael Holder. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+
+    <script>
+        // Inicializa Lucide Icons
+        lucide.createIcons();
+
+        // Lógica para o header transparente ao rolar
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-black/50', 'backdrop-blur-sm');
+            } else {
+                header.classList.remove('bg-black/50', 'backdrop-blur-sm');
+            }
+        });
+        
+        // Lógica para o menu mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-link');
+
+        const toggleMenu = () => {
+            mobileMenu.classList.toggle('hidden');
+            // Troca o ícone de menu para fechar
+            const icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.setAttribute('data-lucide', 'menu');
+            } else {
+                icon.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons();
+        };
+        
+        mobileMenuButton.addEventListener('click', toggleMenu);
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+    </script>
+</body>
+</html>
