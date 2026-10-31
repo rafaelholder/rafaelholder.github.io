@@ -18,142 +18,81 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Rafael Holder, Desenvolvedor SAP ABAP">
     <meta property="og:locale" content="pt_BR">
+    <meta property="og:locale:alternate" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230070F2'></rect><text x='50' y='50' font-size='50' fill='%23ffffff' text-anchor='middle' dy='.35em' font-family='Inter, sans-serif' font-weight='900'>RH</text></svg>">
-    <script>document.documentElement.classList.add('js');</script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/svg+xml" href="./assets/logo.svg">
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+
+    <!-- Aplica o tema antes de desenhar a página, para não piscar -->
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        ink: { 950: '#070b14', 900: '#0b1220', 800: '#111a2e' },
-                        sap: { DEFAULT: '#0070F2', 200: '#8CC4FF', 300: '#4DA3FF', 600: '#0064D9', 700: '#0057BD' },
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                    },
-                },
-            },
-        };
+        (function () {
+            var root = document.documentElement;
+            root.classList.add('js');
+            var saved = null;
+            try { saved = localStorage.getItem('theme'); } catch (e) {}
+            var dark = saved ? saved === 'dark' : !window.matchMedia('(prefers-color-scheme: light)').matches;
+            root.classList.toggle('dark', dark);
+        })();
     </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Gerado a partir de src/input.css com "npm run build" -->
+    <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.min.js"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #070b14; /* Azul-marinho quase preto */
-            /* Brilho azul atrás da janela de código do topo, na largura toda da tela */
-            background-image: radial-gradient(800px 520px at 75% 420px, rgba(0, 112, 242, 0.16) 0%, rgba(7, 11, 20, 0) 70%);
-            background-repeat: no-repeat;
-            color: #cbd5e1;
-        }
-        .card {
-            background-color: rgba(17, 26, 46, 0.6);
-            border: 1px solid rgba(77, 163, 255, 0.15);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
-        .card-featured {
-            border-color: rgba(77, 163, 255, 0.45);
-            background-color: rgba(0, 112, 242, 0.08);
-        }
-        .card-link {
-            transition: border-color .3s ease, transform .3s ease;
-        }
-        .card-link:hover {
-            border-color: rgba(77, 163, 255, 0.5);
-            transform: translateY(-4px);
-        }
-        .chip {
-            background-color: rgba(0, 112, 242, 0.12);
-            color: #8CC4FF;
-            border: 1px solid rgba(77, 163, 255, 0.25);
-        }
-        .header-scrolled {
-            background-color: rgba(7, 11, 20, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        .nav-link.active {
-            color: #4DA3FF;
-        }
-
-        /* Janela de código do topo */
-        .code .an { color: #C586C0; }
-        .code .kw { color: #4DA3FF; }
-        .code .st { color: #CE9178; }
-        .code .id { color: #9CDCFE; }
-
-        /* Entrada suave ao rolar */
-        .js .reveal {
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity .6s ease, transform .6s ease;
-        }
-        .js .reveal.visible {
-            opacity: 1;
-            transform: none;
-        }
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto !important; }
-            .js .reveal { opacity: 1; transform: none; transition: none; }
-            .card-link:hover { transform: none; }
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #070b14;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #0064D9;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0070F2;
-        }
-    </style>
 </head>
 <body class="antialiased">
+
+    <!-- Assinatura (gerada da fonte Herr Von Muellerhoff), reutilizada no header, no Sobre e no rodapé -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+        <symbol id="signature" viewBox="-84 -904 4483 1424">
+            <path fill="currentColor" stroke="currentColor" stroke-width="18" stroke-linejoin="round" d="M407 -392 403 -285Q413 -272 435 -272Q487 -272 590.5 -351.5Q694 -431 777.5 -531.5Q861 -632 861 -685Q861 -726 806 -726Q728 -726 617.0 -668.0Q506 -610 397.0 -519.5Q288 -429 192.5 -327.5Q97 -226 37.5 -128.5Q-22 -31 -22 30Q-22 38 -15 38Q14 38 112.0 -78.5Q210 -195 300.5 -325.5Q391 -456 408 -500Q411 -507 414 -507Q425 -507 425.0 -479.5Q425 -452 420 -445Q409 -415 376 -364Q299 -243 157.5 -96.0Q16 51 -18 51Q-34 51 -34 30Q-34 -48 60.0 -180.5Q154 -313 284.5 -435.5Q415 -558 563.5 -648.0Q712 -738 810 -738Q894 -738 894 -678Q894 -631 842.0 -557.5Q790 -484 717.0 -417.0Q644 -350 558.0 -302.0Q472 -254 410 -254Q405 -254 402 -255Q412 41 499 41Q529 41 575.5 22.5Q622 4 654 -15L686 -34Q694 -39 698.0 -39.0Q702 -39 702.0 -35.5Q702 -32 695 -26Q681 -17 659.0 -3.0Q637 11 582.0 34.5Q527 58 491.5 58.0Q456 58 432.0 35.5Q408 13 396 -26Q373 -96 373.0 -191.5Q373 -287 384.5 -342.0Q396 -397 405 -397Q407 -397 407 -392ZM1007 -119 1008 -106Q847 1 812 1Q806 1 806 -6Q806 -27 822 -66L827 -80Q827 -82 823.5 -82.0Q820 -82 765 -42Q711 -2 694.5 -2.0Q678 -2 678 -32Q678 -115 772.5 -194.0Q867 -273 1000 -273Q1012 -273 1012.0 -263.0Q1012 -253 918.0 -146.5Q824 -40 824 -18Q824 -14 830.0 -14.0Q836 -14 881.0 -40.0Q926 -66 966 -92ZM848 -118Q865 -131 914.0 -187.0Q963 -243 963 -252Q963 -256 955 -256Q909 -256 848.0 -213.5Q787 -171 744.5 -117.0Q702 -63 702 -30Q702 -24 708.0 -24.0Q714 -24 727.5 -31.5Q741 -39 760.5 -52.5Q780 -66 794 -76Q842 -112 848 -118ZM1048 -91Q1048 -95 1046 -95Q1032 -95 1021.5 -72.0Q1011 -49 1011.0 -33.5Q1011 -18 1014 -13Q1048 -75 1048 -91ZM1543 -683Q1543 -685 1540 -685Q1505 -685 1135 -235Q1236 -308 1389.5 -470.5Q1543 -633 1543 -683ZM731 303Q731 306 735 306Q785 306 865.5 208.0Q946 110 1007 0Q997 -4 997.0 -29.5Q997 -55 1018 -90Q731 269 731 303ZM1559 -708Q1568 -708 1568 -700Q1568 -659 1512.0 -584.0Q1456 -509 1375 -432Q1200 -262 1096 -187L1032 -107Q1040 -113 1046 -113Q1062 -113 1062.0 -90.0Q1062 -67 1041 -19Q1078 -37 1120 -63L1207 -119L1208 -106Q1090 -28 1034 -6Q981 106 886.0 213.5Q791 321 721 321Q710 321 710 308Q710 271 899.0 20.0Q1088 -231 1299.0 -469.5Q1510 -708 1559 -708ZM1502 -119 1503 -106Q1342 1 1307 1Q1301 1 1301 -6Q1301 -27 1317 -66L1322 -80Q1322 -82 1318.5 -82.0Q1315 -82 1260 -42Q1206 -2 1189.5 -2.0Q1173 -2 1173 -32Q1173 -115 1267.5 -194.0Q1362 -273 1495 -273Q1507 -273 1507.0 -263.0Q1507 -253 1413.0 -146.5Q1319 -40 1319 -18Q1319 -14 1325.0 -14.0Q1331 -14 1376.0 -40.0Q1421 -66 1461 -92ZM1343 -118Q1360 -131 1409.0 -187.0Q1458 -243 1458 -252Q1458 -256 1450 -256Q1404 -256 1343.0 -213.5Q1282 -171 1239.5 -117.0Q1197 -63 1197 -30Q1197 -24 1203.0 -24.0Q1209 -24 1222.5 -31.5Q1236 -39 1255.5 -52.5Q1275 -66 1289 -76Q1337 -112 1343 -118ZM1720 -257Q1720 -260 1716 -260Q1689 -260 1632.0 -213.0Q1575 -166 1533 -110Q1583 -126 1651.5 -182.0Q1720 -238 1720 -257ZM1489 -21Q1489 -8 1499 -8Q1511 -8 1553.0 -24.5Q1595 -41 1622 -57L1720 -119L1721 -106Q1616 -36 1564.5 -17.0Q1513 2 1496 2Q1468 2 1468 -33Q1468 -80 1502.0 -127.0Q1536 -174 1581.5 -204.0Q1627 -234 1669.5 -253.0Q1712 -272 1734.0 -272.0Q1756 -272 1756 -257Q1756 -220 1668.5 -167.0Q1581 -114 1523 -97Q1489 -48 1489 -21ZM2260 -658Q2230 -658 2039.0 -466.0Q1848 -274 1749 -137Q1841 -207 2051.5 -411.5Q2262 -616 2262 -655Q2262 -657 2260 -658ZM2279 -676Q2288 -676 2288 -665Q2288 -617 2073.5 -409.5Q1859 -202 1733 -114Q1689 -51 1689 -23Q1689 -14 1693 -14Q1734 -14 1840 -80L1900 -119L1901 -106Q1876 -90 1844 -70Q1728 2 1683 2Q1671 2 1671 -17Q1671 -75 1752.0 -188.5Q1833 -302 1937.5 -408.5Q2042 -515 2142.5 -595.5Q2243 -676 2279 -676ZM2551.0 94Q2580.0 94 2612.5 29.5Q2645.0 -35 2669.0 -128Q2546.0 42 2546.0 85Q2546.0 92 2551.0 94ZM2661.0 -345Q2661.0 -243 2681.0 -177Q2704.0 -280 2704.0 -344.5Q2704.0 -409 2681.0 -409Q2661.0 -409 2661.0 -345ZM2372.0 -11 2386.0 -19Q2389.0 -19 2389.0 -16Q2389.0 -8 2364.0 10.0Q2339.0 28 2325.0 28.0Q2311.0 28 2311.0 14Q2311.0 -39 2456.5 -235.0Q2602.0 -431 2702.0 -539L2704.0 -543Q2704.0 -545 2701.0 -545Q2662.0 -519 2538.0 -464.5Q2414.0 -410 2360.0 -410Q2330.0 -410 2330.0 -430Q2330.0 -436 2338.5 -446.5Q2347.0 -457 2350.5 -457.0Q2354.0 -457 2361.0 -450.5Q2368.0 -444 2404.5 -444.0Q2441.0 -444 2528.0 -476.5Q2615.0 -509 2709.0 -563Q2741.0 -582 2762.0 -601.0Q2783.0 -620 2810.5 -649.0Q2838.0 -678 2846.5 -686.5Q2855.0 -695 2878.5 -720.5Q2902.0 -746 2916.0 -760Q2955.0 -797 2980.0 -797Q2988.0 -797 2988.0 -790Q2988.0 -750 2859.0 -656Q2810.0 -619 2802.0 -610Q2689.0 -486 2530.0 -275.5Q2371.0 -65 2370.0 -14Q2370.0 -11 2372.0 -11ZM2882.0 -150 2810.0 -106Q2772.0 -82 2742.5 -82.0Q2713.0 -82 2690.0 -103Q2662.0 -14 2622.5 46.0Q2583.0 106 2545.0 106Q2532.0 106 2532.0 94Q2532.0 31 2662.0 -149Q2636.0 -212 2636.0 -327Q2636.0 -366 2648.0 -392.0Q2660.0 -418 2681.0 -418Q2729.0 -418 2729.0 -318Q2729.0 -276 2720.0 -228Q2859.0 -409 3037.0 -605.0Q3215.0 -801 3275.0 -845Q3289.0 -854 3309.0 -854Q3329.0 -854 3329.0 -847Q3329.0 -842 3325.0 -838Q3320.0 -833 3309.0 -823.0Q3298.0 -813 3290.0 -805Q2940.0 -455 2724.0 -198L2712.0 -183Q2711.0 -180 2707.0 -161.5Q2703.0 -143 2700.0 -134Q2721.0 -98 2754.0 -98Q2773.0 -98 2791.0 -108Q2821.0 -125 2862.0 -152Q2869.0 -156 2877.0 -156.0Q2885.0 -156 2885.0 -154.0Q2885.0 -152 2882.0 -150ZM3035.0 -225V-226Q3015.0 -216 2991.0 -178.5Q2967.0 -141 2963.0 -114Q3035.0 -188 3035.0 -225ZM2822.0 -16Q2860.0 -16 2945.0 -96V-101Q2945.0 -132 2975.5 -177.5Q3006.0 -223 3031.0 -236Q3028.0 -239 3023.0 -239Q2986.0 -239 2900.5 -154.0Q2815.0 -69 2815.0 -22Q2815.0 -16 2822.0 -16ZM2791.0 -30Q2791.0 -105 2877.5 -179.5Q2964.0 -254 3021.0 -254Q3049.0 -254 3049.0 -229Q3049.0 -158 2973.0 -87Q2979.0 -85 2985.0 -85Q3013.0 -85 3066.0 -120L3071.0 -110Q3007.0 -67 2974.0 -67Q2961.0 -67 2955.0 -72Q2916.0 -40 2873.0 -20.0Q2830.0 0 2810.5 0.0Q2791.0 0 2791.0 -30ZM3603.0 -658Q3573.0 -658 3382.0 -466.0Q3191.0 -274 3092.0 -137Q3184.0 -207 3394.5 -411.5Q3605.0 -616 3605.0 -655Q3605.0 -657 3603.0 -658ZM3622.0 -676Q3631.0 -676 3631.0 -665Q3631.0 -617 3416.5 -409.5Q3202.0 -202 3076.0 -114Q3032.0 -51 3032.0 -23Q3032.0 -14 3036.0 -14Q3077.0 -14 3183.0 -80L3243.0 -119L3244.0 -106Q3219.0 -90 3187.0 -70Q3071.0 2 3026.0 2Q3014.0 2 3014.0 -17Q3014.0 -75 3095.0 -188.5Q3176.0 -302 3280.5 -408.5Q3385.0 -515 3485.5 -595.5Q3586.0 -676 3622.0 -676ZM3224.0 -17Q3251.0 -17 3357.0 -95.5Q3463.0 -174 3509.0 -246Q3509.0 -253 3497.0 -253Q3469.0 -253 3402.0 -211.0Q3335.0 -169 3277.5 -112.5Q3220.0 -56 3220.0 -22Q3220.0 -17 3224.0 -17ZM3362.0 6Q3350.0 6 3350.0 -7.5Q3350.0 -21 3356.5 -35.0Q3363.0 -49 3376.0 -70Q3393.0 -97 3398.0 -111L3397.0 -112Q3246.0 -2 3211.0 -2Q3200.0 -2 3200.0 -22Q3200.0 -74 3237.5 -122.0Q3275.0 -170 3328.0 -200.5Q3381.0 -231 3434.0 -249.0Q3487.0 -267 3523.0 -267Q3724.0 -488 3837.0 -634Q3860.0 -664 3889.0 -665Q3898.0 -665 3898.0 -657.0Q3898.0 -649 3765.0 -498.0Q3632.0 -347 3499.0 -190.0Q3366.0 -33 3366.0 -10Q3366.0 -6 3371.0 -6.0Q3376.0 -6 3411.0 -23.0Q3446.0 -40 3474.0 -57L3572.0 -119L3573.0 -106Q3407.0 6 3362.0 6ZM3789.0 -257Q3789.0 -260 3785.0 -260Q3758.0 -260 3701.0 -213.0Q3644.0 -166 3602.0 -110Q3652.0 -126 3720.5 -182.0Q3789.0 -238 3789.0 -257ZM3558.0 -21Q3558.0 -8 3568.0 -8Q3580.0 -8 3622.0 -24.5Q3664.0 -41 3691.0 -57L3789.0 -119L3790.0 -106Q3685.0 -36 3633.5 -17.0Q3582.0 2 3565.0 2Q3537.0 2 3537.0 -33Q3537.0 -80 3571.0 -127.0Q3605.0 -174 3650.5 -204.0Q3696.0 -234 3738.5 -253.0Q3781.0 -272 3803.0 -272.0Q3825.0 -272 3825.0 -257Q3825.0 -220 3737.5 -167.0Q3650.0 -114 3592.0 -97Q3558.0 -48 3558.0 -21ZM4093.0 -149 4101.0 -140Q4055.0 -112 4026.0 -93.0Q3997.0 -74 3982.0 -74Q3960.0 -74 3960.0 -93Q3960.0 -107 3975.5 -148.5Q3991.0 -190 3997.0 -207L3994.0 -210Q3990.0 -210 3985.0 -206Q3884.0 -125 3854.5 -97.0Q3825.0 -69 3797.5 -37.0Q3770.0 -5 3767.5 -2.0Q3765.0 1 3764.0 2Q3761.0 5 3743.5 5.0Q3726.0 5 3726.0 2Q3728.0 -1 3751.0 -26Q3807.0 -87 3852.0 -143L3823.0 -126Q3777.0 -98 3756.0 -84L3752.0 -95L3815.0 -135Q3849.0 -157 3873.5 -181.0Q3898.0 -205 3907.0 -220.0Q3916.0 -235 3923.0 -245.0Q3930.0 -255 3936.0 -255.0Q3942.0 -255 3955.0 -248Q3955.0 -238 3939.0 -213.0Q3923.0 -188 3907.0 -168L3891.0 -149Q3891.0 -147 3892.0 -147Q3895.0 -147 3899.0 -150.5Q3903.0 -154 3932.5 -178.5Q3962.0 -203 3984.0 -220.5Q4006.0 -238 4034.5 -254.0Q4063.0 -270 4076.0 -270.0Q4089.0 -270 4089.0 -264Q4089.0 -256 4040.0 -230Q4029.0 -224 4006.5 -172.5Q3984.0 -121 3984.0 -97Q3984.0 -92 3993.5 -92.0Q4003.0 -92 4031.0 -110Z"/>
+            <path style="fill: rgb(var(--accent))" d="M 545 290 C 1537 390, 3109 290, 4349 -70 C 3109 350, 1537 460, 545 290 Z"/>
+        </symbol>
+    </svg>
 
     <!-- Header -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4">
-            <nav class="flex justify-between items-center">
-                <a href="#home" class="text-2xl font-black text-sap-300">RH</a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#sobre" class="nav-link text-slate-300 hover:text-sap-300 transition-colors">Sobre</a>
-                    <a href="#experiencia" class="nav-link text-slate-300 hover:text-sap-300 transition-colors">Experiência</a>
-                    <a href="#habilidades" class="nav-link text-slate-300 hover:text-sap-300 transition-colors">Habilidades</a>
-                    <a href="#portfolio" class="nav-link text-slate-300 hover:text-sap-300 transition-colors">Portfólio</a>
-                    <a href="#blog" class="nav-link text-slate-300 hover:text-sap-300 transition-colors">Blog</a>
-                </div>
-                <a href="#contato" class="hidden md:block bg-sap-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-sap-700 transition-colors duration-300">
-                    Contato
+            <nav class="flex justify-between items-center gap-4">
+                <a href="#home" class="shrink-0 text-heading hover:text-accent transition-colors" aria-label="Rafael Holder">
+                    <svg viewBox="0 0 4483 1424" class="h-11 md:h-9 lg:h-11 w-auto" aria-hidden="true"><use href="#signature"/></svg>
                 </a>
-                <button id="mobile-menu-button" class="md:hidden text-sap-300" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
-                    <i data-lucide="menu"></i>
-                </button>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#sobre" class="nav-link text-fg hover:text-accent transition-colors" data-i18n="nav.about">Sobre</a>
+                    <a href="#experiencia" class="nav-link text-fg hover:text-accent transition-colors" data-i18n="nav.experience">Experiência</a>
+                    <a href="#habilidades" class="nav-link text-fg hover:text-accent transition-colors" data-i18n="nav.skills">Habilidades</a>
+                    <a href="#portfolio" class="nav-link text-fg hover:text-accent transition-colors" data-i18n="nav.portfolio">Portfólio</a>
+                    <a href="#blog" class="nav-link text-fg hover:text-accent transition-colors" data-i18n="nav.blog">Blog</a>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="lang-toggle" type="button" class="w-10 h-10 rounded-lg border border-line/10 font-mono text-sm font-bold text-fg hover:text-accent hover:border-accent/40 transition-colors" aria-label="Switch to English" lang="en">EN</button>
+                    <button id="theme-toggle" type="button" class="w-10 h-10 rounded-lg border border-line/10 flex items-center justify-center text-fg hover:text-accent hover:border-accent/40 transition-colors" aria-label="Alternar tema claro/escuro">
+                        <i data-lucide="sun" class="theme-icon-sun w-5 h-5"></i>
+                        <i data-lucide="moon" class="theme-icon-moon w-5 h-5"></i>
+                    </button>
+                    <a href="#contato" class="hidden md:block ml-2 bg-sap-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-sap-700 transition-colors duration-300" data-i18n="nav.contact">
+                        Contato
+                    </a>
+                    <button id="mobile-menu-button" type="button" class="md:hidden w-10 h-10 flex items-center justify-center text-accent" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
             </nav>
         </div>
     </header>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-ink-950/95 z-40 md:hidden">
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-canvas/95 z-40 md:hidden">
         <div class="flex flex-col items-center justify-center h-full space-y-8">
-            <a href="#sobre" class="mobile-link text-2xl text-slate-300 hover:text-sap-300 transition-colors">Sobre</a>
-            <a href="#experiencia" class="mobile-link text-2xl text-slate-300 hover:text-sap-300 transition-colors">Experiência</a>
-            <a href="#habilidades" class="mobile-link text-2xl text-slate-300 hover:text-sap-300 transition-colors">Habilidades</a>
-            <a href="#portfolio" class="mobile-link text-2xl text-slate-300 hover:text-sap-300 transition-colors">Portfólio</a>
-            <a href="#blog" class="mobile-link text-2xl text-slate-300 hover:text-sap-300 transition-colors">Blog</a>
-            <a href="#contato" class="mobile-link text-2xl text-slate-300 hover:text-sap-300 transition-colors">Contato</a>
+            <a href="#sobre" class="mobile-link text-2xl text-fg hover:text-accent transition-colors" data-i18n="nav.about">Sobre</a>
+            <a href="#experiencia" class="mobile-link text-2xl text-fg hover:text-accent transition-colors" data-i18n="nav.experience">Experiência</a>
+            <a href="#habilidades" class="mobile-link text-2xl text-fg hover:text-accent transition-colors" data-i18n="nav.skills">Habilidades</a>
+            <a href="#portfolio" class="mobile-link text-2xl text-fg hover:text-accent transition-colors" data-i18n="nav.portfolio">Portfólio</a>
+            <a href="#blog" class="mobile-link text-2xl text-fg hover:text-accent transition-colors" data-i18n="nav.blog">Blog</a>
+            <a href="#contato" class="mobile-link text-2xl text-fg hover:text-accent transition-colors" data-i18n="nav.contact">Contato</a>
         </div>
     </div>
 
@@ -164,41 +103,41 @@
         <section id="home" class="min-h-screen flex items-center pt-28 pb-16">
             <div class="grid lg:grid-cols-2 gap-12 items-center w-full">
                 <div>
-                    <h1 class="text-5xl md:text-7xl font-black text-white leading-tight">
+                    <h1 class="text-5xl md:text-7xl font-black text-heading leading-tight">
                         Rafael Holder
                     </h1>
-                    <h2 class="text-3xl md:text-4xl font-bold text-sap-300 mt-2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-accent mt-2" data-i18n="hero.role">
                         Desenvolvedor SAP ABAP
                     </h2>
-                    <p class="mt-6 text-lg text-slate-300 max-w-xl">
+                    <p class="mt-6 text-lg text-fg max-w-xl" data-i18n="hero.intro">
                         Na EY, desenvolvo e customizo soluções corporativas em SAP S/4HANA. Trago também experiência em backend com Java e em Segurança da Informação.
                     </p>
-                    <ul class="mt-6 flex flex-wrap gap-2" aria-label="Principais tecnologias">
+                    <ul class="mt-6 flex flex-wrap gap-2" data-i18n-aria="hero.techs" aria-label="Principais tecnologias">
                         <li class="chip font-mono text-sm px-3 py-1 rounded-md">S/4HANA</li>
                         <li class="chip font-mono text-sm px-3 py-1 rounded-md">CDS Views</li>
                         <li class="chip font-mono text-sm px-3 py-1 rounded-md">RAP</li>
                         <li class="chip font-mono text-sm px-3 py-1 rounded-md">Joule</li>
                     </ul>
                     <div class="mt-10 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#portfolio" class="bg-sap-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-sap-700 transition-colors duration-300 text-center">
+                        <a href="#portfolio" class="bg-sap-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-sap-700 transition-colors duration-300 text-center" data-i18n="hero.cta">
                             Ver Projetos
                         </a>
-                        <a href="https://www.linkedin.com/in/rafaelholder/" target="_blank" rel="noopener noreferrer" class="border-2 border-sap-300/60 text-sap-300 font-bold py-3 px-6 rounded-lg hover:bg-sap-300/10 hover:border-sap-300 transition-colors duration-300 text-center">
+                        <a href="https://www.linkedin.com/in/rafaelholder/" target="_blank" rel="noopener noreferrer" class="border-2 border-accent/60 text-accent font-bold py-3 px-6 rounded-lg hover:bg-accent/10 hover:border-accent transition-colors duration-300 text-center">
                             LinkedIn
                         </a>
                     </div>
                 </div>
 
                 <!-- Janela de código: um trecho de CDS View -->
-                <div class="card rounded-xl overflow-hidden shadow-2xl shadow-sap/10" aria-hidden="true">
-                    <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-ink-900/80">
+                <div class="code-window rounded-xl overflow-hidden shadow-2xl shadow-sap/10" aria-hidden="true">
+                    <div class="bar flex items-center gap-2 px-4 py-3">
                         <span class="w-3 h-3 rounded-full bg-slate-600"></span>
                         <span class="w-3 h-3 rounded-full bg-slate-600"></span>
                         <span class="w-3 h-3 rounded-full bg-slate-600"></span>
                         <span class="ml-3 font-mono text-xs text-slate-400">zr_salesorder.ddls.asddls</span>
                     </div>
-                    <pre class="code font-mono text-[11px] sm:text-[13px] leading-6 text-slate-200 p-5 overflow-x-auto"><code><span class="an">@AccessControl.authorizationCheck</span>: <span class="an">#CHECK</span>
-<span class="an">@EndUserText.label</span>: <span class="st">'Pedidos de venda'</span>
+                    <pre class="font-mono text-[11px] sm:text-[13px] leading-6 text-slate-200 p-5 overflow-x-auto"><code><span class="an">@AccessControl.authorizationCheck</span>: <span class="an">#CHECK</span>
+<span class="an">@EndUserText.label</span>: <span class="st" data-i18n="code.label">'Pedidos de venda'</span>
 <span class="kw">define root view entity</span> ZR_SalesOrder
   <span class="kw">as select from</span> zsales_order
   <span class="kw">composition</span> [0..*] <span class="kw">of</span> ZR_SalesOrderItem <span class="kw">as</span> _Item
@@ -219,21 +158,20 @@
         <section id="sobre" class="py-20 md:py-32">
             <div class="grid md:grid-cols-5 gap-12 items-center reveal">
                 <div class="md:col-span-2">
-                    <!-- Para usar uma foto, troque este bloco por:
-                         <img src="./assets/foto.jpg" alt="Foto de Rafael Holder" class="w-full max-w-sm mx-auto aspect-square object-cover rounded-xl"> -->
-                    <div class="w-full max-w-sm mx-auto aspect-square rounded-xl card card-featured flex items-center justify-center">
-                        <span class="text-8xl font-black text-sap-300">RH</span>
+                    <!-- A assinatura faz o papel de foto -->
+                    <div class="signature-frame w-full max-w-sm mx-auto aspect-square rounded-xl card card-featured flex items-center justify-center">
+                        <svg viewBox="0 0 4483 1424" class="relative w-4/5 h-auto text-heading" role="img" aria-label="Assinatura de Rafael Holder" data-i18n-aria="about.signature"><use href="#signature"/></svg>
                     </div>
                 </div>
                 <div class="md:col-span-3">
-                    <h2 class="text-3xl font-bold text-white mb-4">Sobre Mim</h2>
-                    <p class="text-slate-300 mb-4">
+                    <h2 class="text-3xl font-bold text-heading mb-4" data-i18n="about.title">Sobre Mim</h2>
+                    <p class="text-fg mb-4" data-i18n="about.p1">
                         Olá! Sou Rafael Holder, Desenvolvedor SAP ABAP Jr na EY. Atuo no desenvolvimento e na customização de soluções corporativas em SAP S/4HANA, trabalhando com CDS Views, RAP (ABAP RESTful Application Programming Model) e Joule, a IA generativa da SAP.
                     </p>
-                    <p class="text-slate-300 mb-4">
-                        Antes disso, construí microsserviços em Java/Spring Boot para um sistema antifraude no Summer Job do CESAR com a CAIXA, e atuei com bancos de dados e Segurança da Informação na Polícia Penal de Pernambuco.
+                    <p class="text-fg mb-4" data-i18n="about.p2">
+                        Antes disso, construí microsserviços em Java/Spring Boot para um sistema antifraude no Summer Job do CESAR com a CAIXA, e atuei com infraestrutura e SecOps na Polícia Penal de Pernambuco.
                     </p>
-                    <p class="text-slate-300">
+                    <p class="text-fg" data-i18n="about.p3">
                         Essa base em backend e segurança me ajuda a entregar soluções SAP escaláveis e seguras. Fora do trabalho, sou apaixonado por Graphic Novels.
                     </p>
                 </div>
@@ -242,41 +180,41 @@
 
         <!-- Seção Experiência -->
         <section id="experiencia" class="py-20 md:py-32">
-            <h2 class="text-3xl font-bold text-white text-center mb-12">Experiência Profissional</h2>
+            <h2 class="text-3xl font-bold text-heading text-center mb-12" data-i18n="xp.title">Experiência Profissional</h2>
             <div class="max-w-3xl mx-auto relative">
                 <!-- Linha do tempo: à esquerda no celular, no centro a partir do tablet -->
                 <div class="absolute left-2 md:left-1/2 -translate-x-1/2 h-full w-0.5 bg-sap/25"></div>
 
                 <!-- Item 1 -->
                 <div class="relative mb-12 reveal">
-                    <div class="absolute left-2 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-sap rounded-full mt-7 border-2 border-ink-950"></div>
+                    <div class="absolute left-2 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-sap rounded-full mt-7 border-2 border-canvas"></div>
                     <div class="card p-6 rounded-xl ml-8 md:ml-0 md:w-[calc(50%-2rem)] md:mr-auto">
-                        <p class="font-mono text-xs text-slate-400 mb-1">mar 2026 – atual</p>
-                        <h3 class="font-bold text-xl text-sap-300">Desenvolvedor SAP ABAP Jr</h3>
-                        <p class="text-sm text-slate-400 mb-2">EY (Ernst & Young)</p>
-                        <p class="text-slate-300">Desenvolvimento e customização de soluções em SAP S/4HANA com ABAP, CDS Views e RAP.</p>
+                        <p class="font-mono text-xs text-muted mb-1" data-i18n="xp.ey.period">mar 2026 – atual</p>
+                        <h3 class="font-bold text-xl text-accent" data-i18n="xp.ey.role">Desenvolvedor SAP ABAP Jr</h3>
+                        <p class="text-sm text-muted mb-2">EY (Ernst & Young)</p>
+                        <p class="text-fg" data-i18n="xp.ey.desc">Desenvolvimento e customização de soluções em SAP S/4HANA com ABAP, CDS Views e RAP.</p>
                     </div>
                 </div>
 
                 <!-- Item 2 -->
                 <div class="relative mb-12 reveal">
-                    <div class="absolute left-2 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-sap rounded-full mt-7 border-2 border-ink-950"></div>
+                    <div class="absolute left-2 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-sap rounded-full mt-7 border-2 border-canvas"></div>
                     <div class="card p-6 rounded-xl ml-8 md:ml-auto md:w-[calc(50%-2rem)]">
-                        <p class="font-mono text-xs text-slate-400 mb-1">jan – fev 2026</p>
-                        <h3 class="font-bold text-xl text-sap-300">Desenvolvedor Fullstack (Summer Job)</h3>
-                        <p class="text-sm text-slate-400 mb-2">CESAR & CAIXA</p>
-                        <p class="text-slate-300">Arquitetura de microsserviços em Java/Spring Boot para um sistema antifraude.</p>
+                        <p class="font-mono text-xs text-muted mb-1" data-i18n="xp.cesar.period">jan – fev 2026</p>
+                        <h3 class="font-bold text-xl text-accent" data-i18n="xp.cesar.role">Desenvolvedor Fullstack (Summer Job)</h3>
+                        <p class="text-sm text-muted mb-2">CESAR & CAIXA</p>
+                        <p class="text-fg" data-i18n="xp.cesar.desc">Arquitetura de microsserviços em Java/Spring Boot para um sistema antifraude.</p>
                     </div>
                 </div>
 
                 <!-- Item 3 -->
                 <div class="relative reveal">
-                    <div class="absolute left-2 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-sap rounded-full mt-7 border-2 border-ink-950"></div>
+                    <div class="absolute left-2 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-sap rounded-full mt-7 border-2 border-canvas"></div>
                     <div class="card p-6 rounded-xl ml-8 md:ml-0 md:w-[calc(50%-2rem)] md:mr-auto">
-                        <p class="font-mono text-xs text-slate-400 mb-1">2024 – jun 2025</p>
-                        <h3 class="font-bold text-xl text-sap-300">Estagiário de Banco de Dados & S.I.</h3>
-                        <p class="text-sm text-slate-400 mb-2">Polícia Penal de Pernambuco</p>
-                        <p class="text-slate-300">Administração e segurança de bancos de dados, automação de processos com Python/Bash, monitoramento de SOC e adequação à ISO 27001 e LGPD.</p>
+                        <p class="font-mono text-xs text-muted mb-1" data-i18n="xp.seap.period">2024 – jun 2025</p>
+                        <h3 class="font-bold text-xl text-accent" data-i18n="xp.seap.role">Estagiário de Infraestrutura e SecOps</h3>
+                        <p class="text-sm text-muted mb-2" data-i18n="xp.seap.org">Polícia Penal de Pernambuco</p>
+                        <p class="text-fg" data-i18n="xp.seap.desc">Automação de processos com Python/Bash, monitoramento de SOC, segurança de bancos de dados e adequação à ISO 27001 e LGPD.</p>
                     </div>
                 </div>
             </div>
@@ -284,13 +222,13 @@
 
         <!-- Seção Habilidades -->
         <section id="habilidades" class="py-20 md:py-32">
-            <h2 class="text-3xl font-bold text-white text-center mb-12">Habilidades</h2>
+            <h2 class="text-3xl font-bold text-heading text-center mb-12" data-i18n="skills.title">Habilidades</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
 
                 <div class="card card-featured rounded-xl p-6 md:col-span-2 reveal">
                     <div class="flex items-center gap-3 mb-4">
-                        <i data-lucide="boxes" class="w-5 h-5 text-sap-300"></i>
-                        <h3 class="font-bold text-lg text-white">SAP</h3>
+                        <i data-lucide="boxes" class="w-5 h-5 text-accent"></i>
+                        <h3 class="font-bold text-lg text-heading">SAP</h3>
                     </div>
                     <ul class="flex flex-wrap gap-2">
                         <li class="chip px-3 py-1.5 rounded-md font-semibold">SAP ABAP</li>
@@ -303,8 +241,8 @@
 
                 <div class="card rounded-xl p-6 reveal">
                     <div class="flex items-center gap-3 mb-4">
-                        <i data-lucide="server" class="w-5 h-5 text-sap-300"></i>
-                        <h3 class="font-bold text-lg text-white">Backend</h3>
+                        <i data-lucide="server" class="w-5 h-5 text-accent"></i>
+                        <h3 class="font-bold text-lg text-heading">Backend</h3>
                     </div>
                     <ul class="flex flex-wrap gap-2">
                         <li class="chip px-3 py-1.5 rounded-md font-semibold">Java</li>
@@ -316,8 +254,8 @@
 
                 <div class="card rounded-xl p-6 reveal">
                     <div class="flex items-center gap-3 mb-4">
-                        <i data-lucide="cloud" class="w-5 h-5 text-sap-300"></i>
-                        <h3 class="font-bold text-lg text-white">Infra & Cloud</h3>
+                        <i data-lucide="cloud" class="w-5 h-5 text-accent"></i>
+                        <h3 class="font-bold text-lg text-heading">Infra & Cloud</h3>
                     </div>
                     <ul class="flex flex-wrap gap-2">
                         <li class="chip px-3 py-1.5 rounded-md font-semibold">Linux</li>
@@ -328,23 +266,23 @@
 
                 <div class="card rounded-xl p-6 reveal">
                     <div class="flex items-center gap-3 mb-4">
-                        <i data-lucide="shield-check" class="w-5 h-5 text-sap-300"></i>
-                        <h3 class="font-bold text-lg text-white">Segurança</h3>
+                        <i data-lucide="shield-check" class="w-5 h-5 text-accent"></i>
+                        <h3 class="font-bold text-lg text-heading" data-i18n="skills.security">Segurança</h3>
                     </div>
                     <ul class="flex flex-wrap gap-2">
-                        <li class="chip px-3 py-1.5 rounded-md font-semibold">Segurança da Informação</li>
+                        <li class="chip px-3 py-1.5 rounded-md font-semibold" data-i18n="skills.infosec">Segurança da Informação</li>
                         <li class="chip px-3 py-1.5 rounded-md font-semibold">ISO 27001 & LGPD</li>
                     </ul>
                 </div>
 
                 <div class="card rounded-xl p-6 reveal">
                     <div class="flex items-center gap-3 mb-4">
-                        <i data-lucide="languages" class="w-5 h-5 text-sap-300"></i>
-                        <h3 class="font-bold text-lg text-white">Idiomas & Soft Skills</h3>
+                        <i data-lucide="languages" class="w-5 h-5 text-accent"></i>
+                        <h3 class="font-bold text-lg text-heading" data-i18n="skills.soft">Idiomas & Soft Skills</h3>
                     </div>
                     <ul class="flex flex-wrap gap-2">
-                        <li class="chip px-3 py-1.5 rounded-md font-semibold">Inglês Fluente</li>
-                        <li class="chip px-3 py-1.5 rounded-md font-semibold">Comunicação assertiva</li>
+                        <li class="chip px-3 py-1.5 rounded-md font-semibold" data-i18n="skills.english">Inglês Fluente</li>
+                        <li class="chip px-3 py-1.5 rounded-md font-semibold" data-i18n="skills.communication">Comunicação assertiva</li>
                     </ul>
                 </div>
             </div>
@@ -352,57 +290,57 @@
 
         <!-- Seção Portfólio -->
         <section id="portfolio" class="py-20 md:py-32">
-            <h2 class="text-3xl font-bold text-white text-center mb-12">Portfólio de Projetos</h2>
+            <h2 class="text-3xl font-bold text-heading text-center mb-12" data-i18n="portfolio.title">Portfólio de Projetos</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <article class="card card-link rounded-xl overflow-hidden group flex flex-col reveal">
-                    <div class="h-40 flex items-center justify-center bg-gradient-to-br from-sap/25 to-transparent border-b border-sap-300/15">
-                        <i data-lucide="shield-check" class="w-14 h-14 text-sap-300 group-hover:scale-110 transition-transform duration-300"></i>
+                    <div class="h-40 flex items-center justify-center bg-gradient-to-br from-sap/20 to-transparent border-b border-line/10">
+                        <i data-lucide="shield-check" class="w-14 h-14 text-accent group-hover:scale-110 transition-transform duration-300"></i>
                     </div>
                     <div class="p-6 flex flex-col flex-1">
-                        <h3 class="text-xl font-bold text-white mb-2">SecureValidator</h3>
-                        <p class="text-slate-300 mb-4">Sistema de login seguro em Python, com hash de senhas usando bcrypt e banco de dados SQLite.</p>
+                        <h3 class="text-xl font-bold text-heading mb-2">SecureValidator</h3>
+                        <p class="text-fg mb-4" data-i18n="portfolio.secure">Sistema de login seguro em Python, com hash de senhas usando bcrypt e banco de dados SQLite.</p>
                         <ul class="flex flex-wrap gap-2 mb-6">
                             <li class="chip text-xs px-2 py-1 rounded">Python</li>
                             <li class="chip text-xs px-2 py-1 rounded">bcrypt</li>
                             <li class="chip text-xs px-2 py-1 rounded">SQLite</li>
                         </ul>
-                        <a href="https://github.com/rafaelholder/SecureValidator" target="_blank" rel="noopener noreferrer" class="mt-auto inline-flex items-center gap-1 font-bold text-sap-300 hover:text-white transition-colors">
-                            Ver no GitHub <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        <a href="https://github.com/rafaelholder/SecureValidator" target="_blank" rel="noopener noreferrer" class="mt-auto inline-flex items-center gap-1 font-bold text-accent hover:text-heading transition-colors">
+                            <span data-i18n="portfolio.link">Ver no GitHub</span> <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
                         </a>
                     </div>
                 </article>
 
                 <article class="card card-link rounded-xl overflow-hidden group flex flex-col reveal">
-                    <div class="h-40 flex items-center justify-center bg-gradient-to-br from-sap/25 to-transparent border-b border-sap-300/15">
-                        <i data-lucide="key-round" class="w-14 h-14 text-sap-300 group-hover:scale-110 transition-transform duration-300"></i>
+                    <div class="h-40 flex items-center justify-center bg-gradient-to-br from-sap/20 to-transparent border-b border-line/10">
+                        <i data-lucide="key-round" class="w-14 h-14 text-accent group-hover:scale-110 transition-transform duration-300"></i>
                     </div>
                     <div class="p-6 flex flex-col flex-1">
-                        <h3 class="text-xl font-bold text-white mb-2">ROT13</h3>
-                        <p class="text-slate-300 mb-4">Aplicação Flask que demonstra o funcionamento do algoritmo ROT13, uma variação da cifra de César.</p>
+                        <h3 class="text-xl font-bold text-heading mb-2">ROT13</h3>
+                        <p class="text-fg mb-4" data-i18n="portfolio.rot13">Aplicação Flask que demonstra o funcionamento do algoritmo ROT13, uma variação da cifra de César.</p>
                         <ul class="flex flex-wrap gap-2 mb-6">
                             <li class="chip text-xs px-2 py-1 rounded">Python</li>
                             <li class="chip text-xs px-2 py-1 rounded">Flask</li>
                         </ul>
-                        <a href="https://github.com/rafaelholder/rot13-flask" target="_blank" rel="noopener noreferrer" class="mt-auto inline-flex items-center gap-1 font-bold text-sap-300 hover:text-white transition-colors">
-                            Ver no GitHub <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        <a href="https://github.com/rafaelholder/rot13-flask" target="_blank" rel="noopener noreferrer" class="mt-auto inline-flex items-center gap-1 font-bold text-accent hover:text-heading transition-colors">
+                            <span data-i18n="portfolio.link">Ver no GitHub</span> <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
                         </a>
                     </div>
                 </article>
 
                 <article class="card card-link rounded-xl overflow-hidden group flex flex-col reveal">
-                    <div class="h-40 flex items-center justify-center bg-gradient-to-br from-sap/25 to-transparent border-b border-sap-300/15">
-                        <i data-lucide="trending-up" class="w-14 h-14 text-sap-300 group-hover:scale-110 transition-transform duration-300"></i>
+                    <div class="h-40 flex items-center justify-center bg-gradient-to-br from-sap/20 to-transparent border-b border-line/10">
+                        <i data-lucide="trending-up" class="w-14 h-14 text-accent group-hover:scale-110 transition-transform duration-300"></i>
                     </div>
                     <div class="p-6 flex flex-col flex-1">
-                        <h3 class="text-xl font-bold text-white mb-2">Crypto Bubbles BR</h3>
-                        <p class="text-slate-300 mb-4">Mostra a variação percentual das criptomoedas usando a API da Binance.</p>
+                        <h3 class="text-xl font-bold text-heading mb-2">Crypto Bubbles BR</h3>
+                        <p class="text-fg mb-4" data-i18n="portfolio.crypto">Mostra a variação percentual das criptomoedas usando a API da Binance.</p>
                         <ul class="flex flex-wrap gap-2 mb-6">
                             <li class="chip text-xs px-2 py-1 rounded">JavaScript</li>
-                            <li class="chip text-xs px-2 py-1 rounded">API da Binance</li>
+                            <li class="chip text-xs px-2 py-1 rounded" data-i18n="portfolio.binance">API da Binance</li>
                         </ul>
-                        <a href="https://github.com/rafaelholder/Crypto_Bubbles_BR" target="_blank" rel="noopener noreferrer" class="mt-auto inline-flex items-center gap-1 font-bold text-sap-300 hover:text-white transition-colors">
-                            Ver no GitHub <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        <a href="https://github.com/rafaelholder/Crypto_Bubbles_BR" target="_blank" rel="noopener noreferrer" class="mt-auto inline-flex items-center gap-1 font-bold text-accent hover:text-heading transition-colors">
+                            <span data-i18n="portfolio.link">Ver no GitHub</span> <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
                         </a>
                     </div>
                 </article>
@@ -411,21 +349,21 @@
 
         <!-- Seção Blog -->
         <section id="blog" class="py-20 md:py-32">
-            <h2 class="text-3xl font-bold text-white text-center mb-12">Blog</h2>
+            <h2 class="text-3xl font-bold text-heading text-center mb-12">Blog</h2>
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                  <!-- Post 1 -->
                 <a href="https://www.linkedin.com/feed/update/urn:li:activity:7321553435097546752/" target="_blank" rel="noopener noreferrer" class="card card-link flex flex-col p-6 rounded-xl reveal">
-                    <p class="text-sm text-slate-400 mb-2">24 de abril de 2025</p>
-                    <h3 class="text-xl font-bold text-sap-300 mb-2">Vazamento de dados da XP Investimentos</h3>
-                    <p class="text-slate-300 mb-4">Uma perspectiva sobre o vazamento de dados e possibilidades de uso para spear phishing.</p>
-                    <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-white">Ler no LinkedIn <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
+                    <p class="text-sm text-muted mb-2" data-i18n="blog.p1.date">24 de abril de 2025</p>
+                    <h3 class="text-xl font-bold text-accent mb-2" data-i18n="blog.p1.title">Vazamento de dados da XP Investimentos</h3>
+                    <p class="text-fg mb-4" data-i18n="blog.p1.desc">Uma perspectiva sobre o vazamento de dados e possibilidades de uso para spear phishing.</p>
+                    <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-heading"><span data-i18n="blog.read">Ler no LinkedIn</span> <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
                 </a>
                  <!-- Post 2  -->
                 <a href="https://www.linkedin.com/feed/update/urn:li:activity:7355994296153444352/" target="_blank" rel="noopener noreferrer" class="card card-link flex flex-col p-6 rounded-xl reveal">
-                    <p class="text-sm text-slate-400 mb-2">29 de julho de 2025</p>
-                    <h3 class="text-xl font-bold text-sap-300 mb-2">Mapeando Táticas com MITRE ATT&CK</h3>
-                    <p class="text-slate-300 mb-4">Como o framework ATT&CK pode ser usado para melhorar a detecção e resposta a incidentes.</p>
-                    <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-white">Ler no LinkedIn <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
+                    <p class="text-sm text-muted mb-2" data-i18n="blog.p2.date">29 de julho de 2025</p>
+                    <h3 class="text-xl font-bold text-accent mb-2" data-i18n="blog.p2.title">Mapeando Táticas com MITRE ATT&CK</h3>
+                    <p class="text-fg mb-4" data-i18n="blog.p2.desc">Como o framework ATT&CK pode ser usado para melhorar a detecção e resposta a incidentes.</p>
+                    <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-heading"><span data-i18n="blog.read">Ler no LinkedIn</span> <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
                 </a>
             </div>
         </section>
@@ -433,89 +371,30 @@
     </main>
 
     <!-- Footer / Contato -->
-    <footer id="contato" class="bg-ink-900/60 border-t border-white/5 mt-20">
+    <footer id="contato" class="bg-surface/60 border-t border-line/10 mt-20">
         <div class="container mx-auto px-6 py-12 text-center">
-            <h2 class="text-3xl font-bold text-white mb-4">Vamos Conversar?</h2>
-            <p class="text-slate-300 max-w-lg mx-auto mb-8">
+            <h2 class="text-3xl font-bold text-heading mb-4" data-i18n="contact.title">Vamos Conversar?</h2>
+            <p class="text-fg max-w-lg mx-auto mb-8" data-i18n="contact.text">
                 Estou sempre aberto a novas oportunidades, projetos e colaborações. Sinta-se à vontade para entrar em contato.
             </p>
             <a href="mailto:rafaelholder.contato@gmail.com" class="inline-flex items-center gap-2 bg-sap-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-sap-700 transition-colors duration-300">
-                <i data-lucide="mail" class="w-5 h-5"></i> Enviar E-mail
+                <i data-lucide="mail" class="w-5 h-5"></i> <span data-i18n="contact.email">Enviar E-mail</span>
             </a>
             <div class="flex justify-center space-x-6 mt-10">
-                <a href="https://www.linkedin.com/in/rafaelholder" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-slate-400 hover:text-sap-300 transition-colors">
+                <a href="https://www.linkedin.com/in/rafaelholder" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-muted hover:text-accent transition-colors">
                     <i data-lucide="linkedin" class="w-8 h-8"></i>
                 </a>
-                <a href="https://github.com/rafaelholder" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-slate-400 hover:text-sap-300 transition-colors">
+                <a href="https://github.com/rafaelholder" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-muted hover:text-accent transition-colors">
                     <i data-lucide="github" class="w-8 h-8"></i>
                 </a>
             </div>
-            <p class="text-sm text-slate-500 mt-12">
+            <svg viewBox="0 0 4483 1424" class="h-14 w-auto mx-auto mt-12 text-heading" aria-hidden="true"><use href="#signature"/></svg>
+            <p class="text-sm text-muted mt-4" data-i18n="contact.copyright">
                 &copy; 2026 Rafael Holder. Todos os direitos reservados.
             </p>
         </div>
     </footer>
 
-
-    <script>
-        // Inicializa Lucide Icons
-        lucide.createIcons();
-
-        // Fundo no header ao rolar e destaque da seção atual no menu
-        const header = document.getElementById('header');
-        const sections = [...document.querySelectorAll('main section[id]')];
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        const onScroll = () => {
-            header.classList.toggle('header-scrolled', window.scrollY > 50);
-
-            let current = sections[0].id;
-            for (const section of sections) {
-                if (section.getBoundingClientRect().top <= 120) current = section.id;
-            }
-            navLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-            });
-        };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-
-        // Entrada suave dos blocos ao aparecerem na tela
-        const reveals = document.querySelectorAll('.reveal');
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-            reveals.forEach(el => observer.observe(el));
-        } else {
-            reveals.forEach(el => el.classList.add('visible'));
-        }
-
-        // Lógica para o menu mobile
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuLinks = document.querySelectorAll('.mobile-link');
-
-        const toggleMenu = () => {
-            const open = mobileMenu.classList.toggle('hidden') === false;
-            document.body.classList.toggle('overflow-hidden', open);
-            mobileMenuButton.setAttribute('aria-expanded', String(open));
-            mobileMenuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
-            // Troca o ícone de menu para fechar (o Lucide substitui o <i> por <svg>, então recria)
-            mobileMenuButton.innerHTML = `<i data-lucide="${open ? 'x' : 'menu'}"></i>`;
-            lucide.createIcons();
-        };
-
-        mobileMenuButton.addEventListener('click', toggleMenu);
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', toggleMenu);
-        });
-
-    </script>
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>

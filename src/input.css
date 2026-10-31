@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+
+/* Estilos próprios do site. Ficam fora das camadas do Tailwind para nunca serem
+   removidos no build, e antes das utilities para que as classes utilitárias
+   continuem tendo prioridade. */
+
+/* Tema claro (padrão) */
+:root {
+    color-scheme: light;
+    --canvas: 247 249 252;
+    --surface: 255 255 255;
+    --heading: 11 18 32;
+    --fg: 30 41 59;
+    --muted: 71 85 105;
+    --accent: 0 87 189;
+    --line: 15 23 42;
+    --glow: rgba(0, 112, 242, 0.10);
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-border: rgba(15, 23, 42, 0.08);
+    --card-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    --card-featured-bg: rgba(0, 112, 242, 0.05);
+    --card-featured-border: rgba(0, 112, 242, 0.35);
+    --card-hover-border: rgba(0, 112, 242, 0.45);
+    --chip-bg: rgba(0, 112, 242, 0.08);
+    --chip-text: #0057BD;
+    --chip-border: rgba(0, 112, 242, 0.22);
+    --header-scrolled: rgba(247, 249, 252, 0.85);
+}
+
+/* Tema escuro */
+.dark {
+    color-scheme: dark;
+    --canvas: 7 11 20;
+    --surface: 17 26 46;
+    --heading: 255 255 255;
+    --fg: 203 213 225;
+    --muted: 148 163 184;
+    --accent: 77 163 255;
+    --line: 255 255 255;
+    --glow: rgba(0, 112, 242, 0.16);
+    --card-bg: rgba(17, 26, 46, 0.6);
+    --card-border: rgba(77, 163, 255, 0.15);
+    --card-shadow: none;
+    --card-featured-bg: rgba(0, 112, 242, 0.08);
+    --card-featured-border: rgba(77, 163, 255, 0.45);
+    --card-hover-border: rgba(77, 163, 255, 0.5);
+    --chip-bg: rgba(0, 112, 242, 0.12);
+    --chip-text: #8CC4FF;
+    --chip-border: rgba(77, 163, 255, 0.25);
+    --header-scrolled: rgba(7, 11, 20, 0.8);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: rgb(var(--canvas));
+    /* Brilho azul atrás da janela de código do topo, na largura toda da tela */
+    background-image: radial-gradient(800px 520px at 75% 420px, var(--glow) 0%, transparent 70%);
+    background-repeat: no-repeat;
+    color: rgb(var(--fg));
+    transition: background-color .3s ease, color .3s ease;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+.card-featured {
+    border-color: var(--card-featured-border);
+    background-color: var(--card-featured-bg);
+}
+.card-link {
+    transition: border-color .3s ease, transform .3s ease;
+}
+.card-link:hover {
+    border-color: var(--card-hover-border);
+    transform: translateY(-4px);
+}
+/* Moldura da assinatura no "Sobre": grade de pontos com brilho azul atrás */
+.signature-frame {
+    position: relative;
+    overflow: hidden;
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(0, 112, 242, 0.25) 0%, transparent 55%),
+        radial-gradient(rgb(var(--accent) / 0.18) 1px, transparent 1.5px);
+    background-size: 100% 100%, 18px 18px;
+}
+.chip {
+    background-color: var(--chip-bg);
+    color: var(--chip-text);
+    border: 1px solid var(--chip-border);
+}
+.header-scrolled {
+    background-color: var(--header-scrolled);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgb(var(--line) / 0.08);
+}
+.nav-link.active {
+    color: rgb(var(--accent));
+}
+
+/* Ícone do botão de tema: sol no escuro (vai para o claro), lua no claro */
+.dark .theme-icon-moon,
+:root:not(.dark) .theme-icon-sun {
+    display: none;
+}
+
+/* Janela de código do topo: sempre escura, nos dois temas */
+.code-window {
+    background-color: #0b1220;
+    border: 1px solid rgba(77, 163, 255, 0.2);
+}
+.code-window .bar {
+    background-color: #070b14;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.code-window .an { color: #C586C0; }
+.code-window .kw { color: #4DA3FF; }
+.code-window .st { color: #CE9178; }
+.code-window .id { color: #9CDCFE; }
+
+/* Entrada suave ao rolar */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .6s ease, transform .6s ease;
+}
+.js .reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+    body { transition: none; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    .card-link:hover { transform: none; }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: rgb(var(--canvas));
+}
+::-webkit-scrollbar-thumb {
+    background: #0064D9;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #0070F2;
+}
+
+@tailwind utilities;
