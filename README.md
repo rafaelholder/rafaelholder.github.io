@@ -1,5 +1,5 @@
 Site Pessoal & Portfólio - Rafael Holder
-Este é o repositório do meu site pessoal, que serve como currículo, portfólio de projetos e blog. Foi desenvolvido para apresentar minhas habilidades, experiências e conhecimentos na área de Segurança da Informação.
+Este é o repositório do meu site pessoal, que serve como currículo, portfólio de projetos e blog. Foi desenvolvido para apresentar minhas habilidades, experiências e conhecimentos como Desenvolvedor SAP ABAP.
 
 ➡️ [Acesse a versão ao vivo aqui](https://rafaelholder.github.io/)
 
