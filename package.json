@@ -1,0 +1,9 @@
+{
+  "name": "rafaelholder.github.io",
+  "private": true,
+  "description": "Site pessoal de Rafael Holder",
+  "scripts": {
+    "build": "npx --yes tailwindcss@3.4.19 -i ./src/input.css -o ./assets/css/style.css --minify",
+    "watch": "npx --yes tailwindcss@3.4.19 -i ./src/input.css -o ./assets/css/style.css --watch"
+  }
+}
