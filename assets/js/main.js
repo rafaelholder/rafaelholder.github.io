@@ -56,10 +56,11 @@ const translations = {
         'skills.communication': 'Assertive communication',
 
         'portfolio.title': 'Project Portfolio',
-        'portfolio.secure': 'Secure login system in Python, with bcrypt password hashing and a SQLite database.',
-        'portfolio.rot13': 'Flask app that demonstrates how the ROT13 algorithm works, a variation of the Caesar cipher.',
-        'portfolio.crypto': 'Shows the percentage change of cryptocurrencies using the Binance API.',
-        'portfolio.binance': 'Binance API',
+        'portfolio.secure': 'Terminal sign-up and login with bcrypt-hashed passwords and a SQLite database. Includes tests and CI.',
+        'portfolio.rot13': 'Flask web app that applies the ROT13 cipher, a variation of the Caesar cipher. Includes tests and CI.',
+        'portfolio.crypto': '24-hour cryptocurrency price changes shown as bubbles, live from the Binance WebSocket.',
+        'portfolio.binance': 'Binance WebSocket',
+        'portfolio.demo': 'View demo',
         'portfolio.link': 'View on GitHub',
 
         'blog.p1.date': 'April 24, 2025',
